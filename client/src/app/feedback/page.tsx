@@ -44,17 +44,17 @@ export default function FeedbackPage() {
   return (
     <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-16">
+      <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-8 md:py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Security Feedback & Support</h1>
-          <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4">Security Feedback & Support</h1>
+          <p className="text-lg sm:text-xl text-emerald-100 max-w-3xl mx-auto px-4">
             Report security issues, system bugs, or suggest improvements for the parking management system.
           </p>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
+        <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 lg:p-8">
           <div className="flex items-center gap-4 mb-8">
             <div className="p-3 bg-emerald-100 rounded-lg">
               <MessageSquare className="w-8 h-8 text-emerald-600" />

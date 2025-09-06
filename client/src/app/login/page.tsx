@@ -18,7 +18,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex">
+    <div className="min-h-screen bg-slate-900 flex flex-col lg:flex-row">
       {/* Left Side - Hero Section */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -60,7 +60,7 @@ export default function LoginPage() {
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-white">
         <div className="w-full max-w-md">
           {/* Mobile Header */}
           <div className="lg:hidden mb-8 text-center">
@@ -72,9 +72,9 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold text-slate-800 mb-2">Welcome Back!</h2>
-            <p className="text-slate-600">Sign in to access security dashboard</p>
+          <div className="mb-6 md:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">Welcome Back!</h2>
+            <p className="text-slate-600 text-sm sm:text-base">Sign in to access security dashboard</p>
           </div>
 
           <div className="space-y-6">
