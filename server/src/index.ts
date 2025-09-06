@@ -1,11 +1,12 @@
-import type { Request, Response } from 'express';
-import express = require('express');
+import express from 'express';
 
 const app = express();
-const port = 3000;
+const port = 3000; // Or any port, e.g., 5000 to avoid conflict with Next.js
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, TypeScript + Node.js Server!');
+app.use(express.json()); // Enable JSON parsing for POST requests
+
+app.get('/', (req, res) => {
+  res.send('Hello from KKW Web Park Backend!');
 });
 
 app.listen(port, () => {
