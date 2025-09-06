@@ -62,7 +62,7 @@ From the client directory, start the React.js development server:
 
 ```
 cd client
-npm start
+npm run dev
 ```
 
 The frontend will run at http://localhost:3001
@@ -73,6 +73,7 @@ From the server directory, start the Node.js backend:
 
 ```
 cd server
+npm run build
 npm start
 ```
 
