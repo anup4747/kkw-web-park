@@ -28,7 +28,7 @@ Clone the project from the GitHub repository to your local machine
 
 ```
 git clone https://github.com/anup4747/kkw-web-park
-cd college-parking-system
+cd kkw-web-park
 ```
 
 3. Install Node.js
