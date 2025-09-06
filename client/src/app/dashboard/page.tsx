@@ -2,31 +2,8 @@
 
 import { useState } from "react";
 import { Car, Bus, Users, Shield, AlertCircle, CheckCircle, MapPin, Clock, Building } from "lucide-react";
+import { Bus_type, Slot, ParkingSpot } from "@/types/types";
 
-type ParkingSpot = {
-    id: string;
-    occupied: boolean;
-    type: 'car' | 'faculty' | 'bus';
-    zone: string;
-};
-
-type Slot = {
-    name: string;
-    occupied: number;
-    capacity: number;
-    location: string;
-    guestSlots?: number;
-    guestOccupied?: number;
-};
-
-type Bus = {
-    id: string;
-    route: string;
-    status: 'active' | 'maintenance' | 'offline';
-    driver: string;
-    capacity: number;
-    currentPassengers: number;
-};
 
 export default function DashboardPage() {
     const [parkingSpots, setParkingSpots] = useState<ParkingSpot[]>([
@@ -67,7 +44,7 @@ export default function DashboardPage() {
         { name: "Slot D", occupied: 2, capacity: 4, location: "Right Side - Buses" },
     ]);
 
-    const [buses] = useState<Bus[]>([
+    const [buses] = useState<Bus_type[]>([
         { id: 'B001', route: 'Route A - Downtown', status: 'active', driver: 'John Smith', capacity: 50, currentPassengers: 32 },
         { id: 'B002', route: 'Route B - Campus Loop', status: 'active', driver: 'Sarah Johnson', capacity: 45, currentPassengers: 28 },
         { id: 'B003', route: 'Route C - Residential', status: 'maintenance', driver: 'Mike Davis', capacity: 40, currentPassengers: 0 },
@@ -177,7 +154,6 @@ export default function DashboardPage() {
                                     </div>
                                 </div>
 
-                                {/* Guest Slots for Slot A */}
                                 {slot.guestSlots && (
                                     <div className="mt-4 pt-3 border-t border-slate-200">
                                         <div className="flex items-center justify-between text-sm">
@@ -210,7 +186,6 @@ export default function DashboardPage() {
 
     return (
         <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
-            {/* Header */}
             <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-8 md:py-16">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -227,7 +202,6 @@ export default function DashboardPage() {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 py-8">
-                {/* Statistics Cards */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
                     <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
                         <div className="flex items-center justify-between">
@@ -278,7 +252,6 @@ export default function DashboardPage() {
                     </div>
                 </div>
 
-                {/* Campus Map */}
                 <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-emerald-100 rounded-lg">
@@ -289,10 +262,8 @@ export default function DashboardPage() {
 
                     <div className="overflow-x-auto overflow-y-hidden flex items-center">
                         <div className="relative bg-slate-100 rounded-lg min-w-[800px] min-h-[600px] w-full p-16">
-                            {/* College Ground Rectangle */}
                             <div className="relative w-full h-96 bg-gradient-to-br from-emerald-50 to-teal-50 border-4 border-emerald-300 rounded-lg mx-auto">
 
-                                {/* College Building in Center */}
                                 <div className="absolute inset-4 bg-white border-2 border-slate-300 rounded-lg flex items-center justify-center">
                                     <div className="text-center">
                                         <Building className="w-12 h-12 text-slate-400 mx-auto mb-2" />
@@ -300,7 +271,6 @@ export default function DashboardPage() {
                                     </div>
                                 </div>
 
-                                {/* Upper Side - 20 Car Spots */}
                                 <div className="absolute -top-3 left-8 right-8">
                                     <div className="flex justify-between gap-1">
                                         {Array.from({ length: 20 }, (_, i) => {
@@ -319,7 +289,6 @@ export default function DashboardPage() {
                                     </div>
                                 </div>
 
-                                {/* Lower Side - 20 Car Spots */}
                                 <div className="absolute -bottom-3 left-8 right-8">
                                     <div className="flex justify-between gap-1">
                                         {Array.from({ length: 20 }, (_, i) => {
@@ -337,7 +306,6 @@ export default function DashboardPage() {
                                         })}
                                     </div>
                                 </div>
-                                {/* Left Side - 6 Faculty Spots */}
                                 <div className="absolute -left-3 top-8 bottom-8">
                                     <div className="flex flex-col justify-between h-full gap-1">
                                         {Array.from({ length: 6 }, (_, i) => {
@@ -356,7 +324,6 @@ export default function DashboardPage() {
                                     </div>
                                 </div>
 
-                                {/* Right Side - 4 Bus Spots */}
                                 <div className="absolute -right-3 top-8 bottom-8">
                                     <div className="flex flex-col justify-between h-full gap-1">
                                         {Array.from({ length: 4 }, (_, i) => {
@@ -391,7 +358,6 @@ export default function DashboardPage() {
                             </div>
 
 
-                            {/* Legend */}
                             <div className="mt-16 flex flex-wrap gap-6 justify-center">
                                 <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
                                     <div className="w-6 h-6 bg-green-200 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold">✓</div>
@@ -414,7 +380,6 @@ export default function DashboardPage() {
                     </div>
                 </div>
 
-                {/* Parking Zone Cards */}
                 <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-emerald-100 rounded-lg">
@@ -425,7 +390,6 @@ export default function DashboardPage() {
 
                     <ParkingGraph slots={slots} />
 
-                    {/* Security Controls */}
                     <div className="mt-8 pt-6 border-t border-slate-200">
                         <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">Security Management Controls</h3>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -481,7 +445,6 @@ export default function DashboardPage() {
                     </div>
                 </div>
 
-                {/* Bus Fleet Management */}
                 <div className="bg-white rounded-xl shadow-lg p-8">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-orange-100 rounded-lg">

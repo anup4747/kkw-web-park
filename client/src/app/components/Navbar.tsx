@@ -22,7 +22,6 @@ export default function Navbar() {
             <span className="text-lg md:text-xl">Security Dashboard</span>
           </Link>
           
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6 text-sm">
             <Link href="/" className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 transition-colors">
               <MapPin className="w-4 h-4" />
@@ -45,7 +44,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Navigation */}
           <div className="md:hidden flex items-center gap-2">
             <Link href="/login" className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold px-3 py-1.5 rounded-lg text-sm">
               Login
@@ -64,7 +62,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-slate-200 animate-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col gap-3 pb-4">

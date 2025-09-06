@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import { Car, MapPin, Clock, Users, AlertCircle, CheckCircle } from "lucide-react";
-
-type Slot = {
-  name: string;
-  occupied: number;
-  capacity: number;
-  location: string;
-  guestSlots?: number;
-  guestOccupied?: number;
-};
+import { Slot } from "@/types/types";
 
 function ParkingGraph({ slots }: { slots: Slot[] }) {
   return (

@@ -19,7 +19,6 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-slate-900 flex flex-col lg:flex-row">
-      {/* Left Side - Hero Section */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 flex flex-col justify-center px-12 text-white">
@@ -54,15 +53,12 @@ export default function LoginPage() {
           </div>
         </div>
         
-        {/* Decorative circles */}
         <div className="absolute top-20 right-20 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
         <div className="absolute bottom-20 right-32 w-48 h-48 bg-emerald-300/20 rounded-full blur-2xl"></div>
       </div>
 
-      {/* Right Side - Login Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-white">
         <div className="w-full max-w-md">
-          {/* Mobile Header */}
           <div className="lg:hidden mb-8 text-center">
             <div className="inline-flex items-center mb-4">
               <div className="p-2 bg-emerald-100 rounded-lg">
@@ -78,7 +74,6 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-6">
-            {/* Email Input */}
             <div className="space-y-2">
               <label 
                 htmlFor="email" 
@@ -108,7 +103,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Password Input */}
             <div className="space-y-2">
               <label 
                 htmlFor="password" 
@@ -140,7 +134,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Options */}
             <div className="flex items-center justify-between">
               <label className="flex items-center cursor-pointer group">
                 <input
@@ -158,7 +151,6 @@ export default function LoginPage() {
               </button>
             </div>
 
-            {/* Login Button */}
             <button
               onClick={handleSubmit}
               disabled={isLoading}
@@ -177,7 +169,6 @@ export default function LoginPage() {
               )}
             </button>
 
-            {/* Divider */}
             <div className="relative my-8">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-slate-200"></div>
@@ -187,13 +178,11 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Sign Up */}
             <button className="w-full border-2 border-slate-200 hover:border-emerald-300 text-slate-700 hover:text-emerald-700 font-semibold py-4 px-6 rounded-xl transition-all duration-300 hover:bg-emerald-50">
               Request Access
             </button>
           </div>
 
-          {/* Footer */}
           <div className="mt-8 text-center text-xs text-slate-500">
             <p>© 2025 KKW College Parking System • Privacy Policy • Terms of Service</p>
           </div>

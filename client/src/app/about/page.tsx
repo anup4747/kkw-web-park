@@ -3,7 +3,6 @@ import { Car, MapPin, Clock, Shield, Users, Phone, Mail, Building } from "lucide
 export default function AboutPage() {
   return (
     <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
-      {/* Hero Section */}
       <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-8 md:py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4">Security & Administration</h1>
@@ -14,7 +13,6 @@ export default function AboutPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-        {/* Security System Overview */}
         <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 lg:p-8 mb-8 md:mb-12">
           <div className="flex items-center gap-4 mb-6">
             <div className="p-3 bg-emerald-100 rounded-lg">
@@ -56,7 +54,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Security Monitoring System */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
           <div className="flex items-center gap-4 mb-6">
             <div className="p-3 bg-blue-100 rounded-lg">
@@ -83,7 +80,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Security Protocols */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
           <h2 className="text-3xl font-bold text-slate-800 mb-6">Security Protocols & Procedures</h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -132,7 +128,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Security Contact Information */}
         <div className="bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-6">Security Contact Information</h2>
           <div className="grid md:grid-cols-2 gap-8">

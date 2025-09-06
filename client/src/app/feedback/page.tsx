@@ -43,7 +43,6 @@ export default function FeedbackPage() {
 
   return (
     <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
-      {/* Hero Section */}
       <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-8 md:py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4">Security Feedback & Support</h1>
@@ -63,7 +62,6 @@ export default function FeedbackPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Feedback Type */}
             <div className="space-y-3">
               <label className="block text-lg font-semibold text-slate-700">Feedback Type</label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -109,7 +107,6 @@ export default function FeedbackPage() {
               </div>
             </div>
 
-            {/* Subject */}
             <div className="space-y-2">
               <label htmlFor="subject" className="block text-lg font-semibold text-slate-700">
                 Subject
@@ -123,7 +120,6 @@ export default function FeedbackPage() {
               />
             </div>
 
-            {/* Details */}
             <div className="space-y-2">
               <label htmlFor="details" className="block text-lg font-semibold text-slate-700">
                 Details
@@ -137,7 +133,6 @@ export default function FeedbackPage() {
               />
             </div>
 
-            {/* Contact Info */}
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label htmlFor="email" className="block text-lg font-semibold text-slate-700">
@@ -166,7 +161,6 @@ export default function FeedbackPage() {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div className="pt-4">
               <button
                 type="submit"
@@ -188,7 +182,6 @@ export default function FeedbackPage() {
             </div>
           </form>
 
-          {/* Additional Info */}
           <div className="mt-8 p-6 bg-slate-50 rounded-lg">
             <h3 className="text-lg font-semibold text-slate-800 mb-3">What happens next?</h3>
             <ul className="space-y-2 text-slate-600">
