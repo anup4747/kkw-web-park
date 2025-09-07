@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Car, MapPin, Clock, Users, AlertCircle, CheckCircle } from "lucide-react";
 import { Slot } from "@/types/types";
 
@@ -125,6 +126,11 @@ export default function Home() {
                 </p>
               </>
             )}
+            <div className="mt-6">
+              <Link href="/booking/faculties" className="inline-block bg-white text-emerald-700 font-semibold px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md hover:bg-emerald-50 transition-all duration-200">
+                Book a Parking Slot
+              </Link>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 text-center">
