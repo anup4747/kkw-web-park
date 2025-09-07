@@ -15,7 +15,7 @@ export default function Navbar() {
     <header className="w-full bg-white shadow-sm border-b border-slate-200">
       <nav className="mx-auto max-w-7xl px-4 py-3 md:py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 md:gap-3 font-bold text-slate-800">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 md:gap-3 font-bold text-slate-800">
             <div className="p-1.5 md:p-2 bg-emerald-100 rounded-lg">
               <Car className="w-5 h-5 md:w-6 md:h-6 text-emerald-600" />
             </div>
