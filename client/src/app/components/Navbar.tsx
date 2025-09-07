@@ -35,6 +35,10 @@ export default function Navbar() {
               <Info className="w-4 h-4" />
               About
             </Link>
+            <Link href="/booking/faculties" className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 transition-colors">
+              <Info className="w-4 h-4" />
+              Parking Booking
+            </Link>
             <Link href="/feedback" className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 transition-colors">
               <MessageSquare className="w-4 h-4" />
               Feedback
@@ -88,6 +92,14 @@ export default function Navbar() {
               >
                 <Info className="w-4 h-4" />
                 About
+              </Link>
+              <Link 
+                href="/booking/faculties" 
+                className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 transition-colors py-2 px-2 rounded-lg hover:bg-emerald-50"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Info className="w-4 h-4" />
+                Parking Booking
               </Link>
               <Link 
                 href="/feedback" 
