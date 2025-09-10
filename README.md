@@ -52,7 +52,7 @@ npm install
 Navigate to the server directory and install the required packages for the Node.js backend:
 
 ```
-cd ../server
+cd server
 npm install
 ```
 
