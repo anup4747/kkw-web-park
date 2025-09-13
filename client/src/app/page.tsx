@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Car, MapPin, Clock, Users, AlertCircle, CheckCircle } from "lucide-react";
+import { Car, MapPin, Clock, Users, AlertCircle, CheckCircle, Calendar, ArrowRight } from "lucide-react";
 import { Slot } from "@/types/types";
 
 function ParkingGraph({ slots }: { slots: Slot[] }) {
@@ -14,35 +14,35 @@ function ParkingGraph({ slots }: { slots: Slot[] }) {
         const isAlmostFull = percent >= 80;
         
         return (
-          <div key={slot.name} className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 hover:shadow-xl transition-all duration-300">
+          <div key={slot.name} className="professional-card p-6 hover:shadow-lg transition-all duration-300 group">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-lg ${isFull ? 'bg-red-100' : isAlmostFull ? 'bg-yellow-100' : 'bg-emerald-100'}`}>
-                  <Car className={`w-5 h-5 ${isFull ? 'text-red-600' : isAlmostFull ? 'text-yellow-600' : 'text-emerald-600'}`} />
+                <div className={`p-3 rounded-lg ${isFull ? 'bg-red-100 text-red-600' : isAlmostFull ? 'bg-yellow-100 text-yellow-600' : 'bg-green-100 text-green-600'} group-hover:scale-110 transition-transform duration-300`}>
+                  <Car className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-800">{slot.name}</h3>
-                  <p className="text-sm text-slate-500">{slot.location}</p>
+                  <h3 className="font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{slot.name}</h3>
+                  <p className="text-sm text-gray-600">{slot.location}</p>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-2xl font-bold text-slate-800">{slot.occupied}/{slot.capacity}</div>
-                <div className="text-sm text-slate-500">vehicles</div>
+                <div className="text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">{slot.occupied}/{slot.capacity}</div>
+                <div className="text-sm text-gray-600">vehicles</div>
               </div>
             </div>
             
             <div className="space-y-3">
-              <div className="h-3 w-full bg-slate-200 rounded-full overflow-hidden">
+              <div className="h-3 w-full bg-gray-200 rounded-full overflow-hidden">
                 <div
                   className={`h-3 rounded-full transition-all duration-500 ${
-                    isFull ? 'bg-red-500' : isAlmostFull ? 'bg-yellow-500' : 'bg-emerald-500'
+                    isFull ? 'bg-red-500' : isAlmostFull ? 'bg-yellow-500' : 'bg-green-500'
                   }`}
                   style={{ width: `${percent}%` }}
                 />
               </div>
               
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-600">{percent}% occupied</span>
+                <span className="text-gray-600">{percent}% occupied</span>
                 <div className="flex items-center gap-1">
                   {isFull ? (
                     <>
@@ -56,8 +56,8 @@ function ParkingGraph({ slots }: { slots: Slot[] }) {
                     </>
                   ) : (
                     <>
-                      <CheckCircle className="w-4 h-4 text-emerald-500" />
-                      <span className="text-emerald-600 font-medium">Available</span>
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-green-600 font-medium">Available</span>
                     </>
                   )}
                 </div>
@@ -65,14 +65,14 @@ function ParkingGraph({ slots }: { slots: Slot[] }) {
 
               {/* Guest Slots for Slot A */}
               {slot.guestSlots && (
-                <div className="mt-4 pt-3 border-t border-slate-200">
+                <div className="mt-4 pt-3 border-t border-gray-200">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-slate-600">Guest Parking:</span>
-                    <span className="font-semibold text-slate-800">
+                    <span className="text-gray-600">Guest Parking:</span>
+                    <span className="font-semibold text-gray-800">
                       {slot.guestOccupied || 0}/{slot.guestSlots}
                     </span>
                   </div>
-                  <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden mt-1">
+                  <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden mt-1">
                     <div
                       className="h-2 rounded-full bg-blue-500 transition-all duration-500"
                       style={{ width: `${Math.min(100, Math.round(((slot.guestOccupied || 0) / slot.guestSlots) * 100))}%` }}
@@ -104,7 +104,7 @@ export default function Home() {
   const overallPercent = Math.round((totalOccupied / totalCapacity) * 100);
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 professional-grid">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
@@ -126,11 +126,19 @@ export default function Home() {
                 </p>
               </>
             )}
+            <div className="flex gap-3 justify-center">
             <div className="mt-6">
-              <Link href="/booking/faculties" className="inline-block bg-white text-emerald-700 font-semibold px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md hover:bg-emerald-50 transition-all duration-200">
+              <Link href="/role-selector" className="inline-block bg-white text-emerald-700 font-semibold px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md hover:bg-emerald-50 transition-all duration-200">
+                Access Roles
+              </Link>
+            </div>
+             <div className="mt-6">
+              <Link href="/login" className="inline-block bg-white text-emerald-700 font-semibold px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md hover:bg-emerald-50 transition-all duration-200">
                 Book a Parking Slot
               </Link>
             </div>
+            </div>
+            
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 text-center">
@@ -156,11 +164,17 @@ export default function Home() {
       {/* Parking Overview */}
       <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-3 md:mb-4">Security Monitoring Dashboard</h2>
-          <p className="text-slate-600 text-base md:text-lg px-4">Real-time surveillance and management of all parking zones</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 md:mb-4 professional-heading">
+            Parking Management Dashboard
+          </h2>
+          <p className="text-gray-600 text-base md:text-lg px-4 professional-text">
+            Real-time monitoring and management of all parking zones across the campus
+          </p>
         </div>
         
-        <ParkingGraph slots={slots} />
+        <div className="professional-card p-6 border border-gray-200">
+          <ParkingGraph slots={slots} />
+        </div>
       </div>
     </div>
   );
