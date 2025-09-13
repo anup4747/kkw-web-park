@@ -13,7 +13,8 @@ import {
   LogOut,
   Menu,
   X,
-  User
+  User,
+  MessageSquareWarning
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -35,6 +36,7 @@ export default function AdminSidebar({ currentPage = 'dashboard' }: AdminSidebar
     { name: 'Security Guards', href: '/admin/security', icon: Shield },
     { name: 'Faculty Management', href: '/admin/faculty', icon: Users },
     { name: 'Reports', href: '/admin/reports', icon: BarChart3 },
+    { name: 'Complaints', href: '/admin/complaints', icon: MessageSquareWarning },
     { name: 'Audit Logs', href: '/admin/logs', icon: FileText },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];

@@ -6,11 +6,11 @@ import AdminSidebar from '../../components/AdminSidebar';
 import AdminTopBar from '../../components/AdminTopBar';
 import Card from '../../components/Card';
 import ParkingMap, { ParkingSlot } from '../../components/ParkingMap';
-import { 
-  Users, 
-  MapPin, 
-  Shield, 
-  TrendingUp, 
+import {
+  Users,
+  MapPin,
+  Shield,
+  TrendingUp,
   AlertCircle,
   Clock,
   CheckCircle,
@@ -20,6 +20,7 @@ import {
   MessageSquareWarning
 } from 'lucide-react';
 import { Bus_type, Slot, ParkingSpot } from "@/types/types";
+import Link from 'next/link';
 
 /**
  * Admin Dashboard page
@@ -71,101 +72,101 @@ export default function AdminDashboard() {
   const [parkingSpots, setParkingSpots] = useState<ParkingSpot[]>([
     // Upper side - 20 car spots
     ...Array.from({ length: 20 }, (_, i) => ({
-        id: `upper-${i + 1}`,
-        occupied: Math.random() > 0.6,
-        type: 'car' as const,
-        zone: 'Upper Side'
+      id: `upper-${i + 1}`,
+      occupied: Math.random() > 0.6,
+      type: 'car' as const,
+      zone: 'Upper Side'
     })),
     // Lower side - 20 car spots
     ...Array.from({ length: 20 }, (_, i) => ({
-        id: `lower-${i + 1}`,
-        occupied: Math.random() > 0.5,
-        type: 'car' as const,
-        zone: 'Lower Side'
+      id: `lower-${i + 1}`,
+      occupied: Math.random() > 0.5,
+      type: 'car' as const,
+      zone: 'Lower Side'
     })),
     // Left side - 6 faculty spots
     ...Array.from({ length: 6 }, (_, i) => ({
-        id: `faculty-${i + 1}`,
-        occupied: Math.random() > 0.3,
-        type: 'faculty' as const,
-        zone: 'Faculty Area'
+      id: `faculty-${i + 1}`,
+      occupied: Math.random() > 0.3,
+      type: 'faculty' as const,
+      zone: 'Faculty Area'
     })),
     // Right side - 4 bus spots
     ...Array.from({ length: 4 }, (_, i) => ({
-        id: `bus-${i + 1}`,
-        occupied: Math.random() > 0.4,
-        type: 'bus' as const,
-        zone: 'Bus Terminal'
+      id: `bus-${i + 1}`,
+      occupied: Math.random() > 0.4,
+      type: 'bus' as const,
+      zone: 'Bus Terminal'
     }))
-]);
+  ]);
 
-const [slots, setSlots] = useState<Slot[]>([
+  const [slots, setSlots] = useState<Slot[]>([
     { name: "Slot A", occupied: 5, capacity: 20, location: "Lower Side", guestSlots: 6, guestOccupied: 2 },
     { name: "Slot B", occupied: 3, capacity: 6, location: "Left Side - Faculty" },
     { name: "Slot C", occupied: 12, capacity: 20, location: "Upper Side" },
     { name: "Slot D", occupied: 2, capacity: 4, location: "Right Side - Buses" },
-]);
+  ]);
 
-const [buses] = useState<Bus_type[]>([
+  const [buses] = useState<Bus_type[]>([
     { id: 'B001', route: 'Route A - Downtown', status: 'active', driver: 'John Smith', capacity: 50, currentPassengers: 32 },
     { id: 'B002', route: 'Route B - Campus Loop', status: 'active', driver: 'Sarah Johnson', capacity: 45, currentPassengers: 28 },
     { id: 'B003', route: 'Route C - Residential', status: 'maintenance', driver: 'Mike Davis', capacity: 40, currentPassengers: 0 },
     { id: 'B004', route: 'Route D - Express', status: 'offline', driver: 'Lisa Wilson', capacity: 35, currentPassengers: 0 }
-]);
+  ]);
 
-const toggleSpot = (spotId: string) => {
+  const toggleSpot = (spotId: string) => {
     setParkingSpots(prev =>
-        prev.map(spot =>
-            spot.id === spotId ? { ...spot, occupied: !spot.occupied } : spot
-        )
+      prev.map(spot =>
+        spot.id === spotId ? { ...spot, occupied: !spot.occupied } : spot
+      )
     );
-};
+  };
 
-const getSpotColor = (spot: ParkingSpot) => {
+  const getSpotColor = (spot: ParkingSpot) => {
     if (spot.type === 'faculty') {
-        return spot.occupied ? 'bg-blue-500' : 'bg-blue-200';
+      return spot.occupied ? 'bg-blue-500' : 'bg-blue-200';
     } else if (spot.type === 'bus') {
-        return spot.occupied ? 'bg-purple-500' : 'bg-purple-200';
+      return spot.occupied ? 'bg-purple-500' : 'bg-purple-200';
     } else {
-        return spot.occupied ? 'bg-red-500' : 'bg-green-200';
+      return spot.occupied ? 'bg-red-500' : 'bg-green-200';
     }
-};
+  };
 
-const getSpotIcon = (spot: ParkingSpot) => {
+  const getSpotIcon = (spot: ParkingSpot) => {
     if (spot.type === 'faculty') {
-        return <Users className="w-3 h-3" />;
+      return <Users className="w-3 h-3" />;
     } else if (spot.type === 'bus') {
-        return <Bus className="w-3 h-3" />;
+      return <Bus className="w-3 h-3" />;
     } else {
-        return <Car className="w-3 h-3" />;
+      return <Car className="w-3 h-3" />;
     }
-};
+  };
 
-const getBusStatusColor = (status: string) => {
+  const getBusStatusColor = (status: string) => {
     switch (status) {
-        case 'active': return 'text-green-600 bg-green-100';
-        case 'maintenance': return 'text-yellow-600 bg-yellow-100';
-        case 'offline': return 'text-red-600 bg-red-100';
-        default: return 'text-gray-600 bg-gray-100';
+      case 'active': return 'text-green-600 bg-green-100';
+      case 'maintenance': return 'text-yellow-600 bg-yellow-100';
+      case 'offline': return 'text-red-600 bg-red-100';
+      default: return 'text-gray-600 bg-gray-100';
     }
-};
+  };
 
-const getBusStatusIcon = (status: string) => {
+  const getBusStatusIcon = (status: string) => {
     switch (status) {
-        case 'active': return <CheckCircle className="w-4 h-4" />;
-        case 'maintenance': return <AlertCircle className="w-4 h-4" />;
-        case 'offline': return <AlertCircle className="w-4 h-4" />;
-        default: return <AlertCircle className="w-4 h-4" />;
+      case 'active': return <CheckCircle className="w-4 h-4" />;
+      case 'maintenance': return <AlertCircle className="w-4 h-4" />;
+      case 'offline': return <AlertCircle className="w-4 h-4" />;
+      default: return <AlertCircle className="w-4 h-4" />;
     }
-};
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       <AdminSidebar currentPage="dashboard" />
-      
+
       <div className="lg:ml-64">
         <AdminTopBar title="Dashboard" />
-        
+
         <main className="p-6">
           {/* Stats Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -177,10 +178,9 @@ const getBusStatusIcon = (status: string) => {
                     <div>
                       <p className="text-sm font-medium text-gray-600">{stat.title}</p>
                       <p className="text-2xl font-bold text-blue-600">{stat.value}</p>
-                      <p className={`text-sm ${
-                        stat.changeType === 'positive' ? 'text-green-600' : 
-                        stat.changeType === 'negative' ? 'text-red-600' : 'text-gray-600'
-                      }`}>
+                      <p className={`text-sm ${stat.changeType === 'positive' ? 'text-green-600' :
+                          stat.changeType === 'negative' ? 'text-red-600' : 'text-gray-600'
+                        }`}>
                         {stat.change} from last month
                       </p>
                     </div>
@@ -196,132 +196,132 @@ const getBusStatusIcon = (status: string) => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Parking Map */}
             <Card className="p-6">
-                    <div className="flex items-center gap-4 mb-6">
-                        <div className="p-3 bg-emerald-100 rounded-lg">
-                            <MapPin className="w-8 h-8 text-emerald-600" />
-                        </div>
-                        <h2 className="text-3xl font-bold text-slate-800">Campus Parking Map</h2>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-emerald-100 rounded-lg">
+                  <MapPin className="w-8 h-8 text-emerald-600" />
+                </div>
+                <h2 className="text-3xl font-bold text-slate-800">Campus Parking Map</h2>
+              </div>
+
+              <div className="overflow-x-auto overflow-y-hidden flex items-center">
+                <div className="relative bg-slate-100 rounded-lg min-w-[800px] min-h-[600px] w-full p-16">
+                  <div className="relative w-full h-96 bg-gradient-to-br from-emerald-50 to-teal-50 border-4 border-emerald-300 rounded-lg mx-auto">
+
+                    <div className="absolute inset-4 bg-white border-2 border-slate-300 rounded-lg flex items-center justify-center">
+                      <div className="text-center">
+                        <Building className="w-12 h-12 text-slate-400 mx-auto mb-2" />
+                        <p className="text-slate-600 font-semibold">KKW College Ground</p>
+                      </div>
                     </div>
 
-                    <div className="overflow-x-auto overflow-y-hidden flex items-center">
-                        <div className="relative bg-slate-100 rounded-lg min-w-[800px] min-h-[600px] w-full p-16">
-                            <div className="relative w-full h-96 bg-gradient-to-br from-emerald-50 to-teal-50 border-4 border-emerald-300 rounded-lg mx-auto">
-
-                                <div className="absolute inset-4 bg-white border-2 border-slate-300 rounded-lg flex items-center justify-center">
-                                    <div className="text-center">
-                                        <Building className="w-12 h-12 text-slate-400 mx-auto mb-2" />
-                                        <p className="text-slate-600 font-semibold">KKW College Ground</p>
-                                    </div>
-                                </div>
-
-                                <div className="absolute -top-3 left-8 right-8">
-                                    <div className="flex justify-between gap-1">
-                                        {Array.from({ length: 20 }, (_, i) => {
-                                            const spot = parkingSpots.find(s => s.id === `upper-${i + 1}`);
-                                            return (
-                                                <button
-                                                    key={`upper-${i + 1}`}
-                                                    onClick={() => toggleSpot(`upper-${i + 1}`)}
-                                                    className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
-                                                    title={`Upper Side Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
-                                                >
-                                                    {getSpotIcon(spot!)}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-
-                                <div className="absolute -bottom-3 left-8 right-8">
-                                    <div className="flex justify-between gap-1">
-                                        {Array.from({ length: 20 }, (_, i) => {
-                                            const spot = parkingSpots.find(s => s.id === `lower-${i + 1}`);
-                                            return (
-                                                <button
-                                                    key={`lower-${i + 1}`}
-                                                    onClick={() => toggleSpot(`lower-${i + 1}`)}
-                                                    className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
-                                                    title={`Lower Side Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
-                                                >
-                                                    {getSpotIcon(spot!)}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                                <div className="absolute -left-3 top-8 bottom-8">
-                                    <div className="flex flex-col justify-between h-full gap-1">
-                                        {Array.from({ length: 6 }, (_, i) => {
-                                            const spot = parkingSpots.find(s => s.id === `faculty-${i + 1}`);
-                                            return (
-                                                <button
-                                                    key={`faculty-${i + 1}`}
-                                                    onClick={() => toggleSpot(`faculty-${i + 1}`)}
-                                                    className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
-                                                    title={`Faculty Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
-                                                >
-                                                    {getSpotIcon(spot!)}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-
-                                <div className="absolute -right-3 top-8 bottom-8">
-                                    <div className="flex flex-col justify-between h-full gap-1">
-                                        {Array.from({ length: 4 }, (_, i) => {
-                                            const spot = parkingSpots.find(s => s.id === `bus-${i + 1}`);
-                                            return (
-                                                <button
-                                                    key={`bus-${i + 1}`}
-                                                    onClick={() => toggleSpot(`bus-${i + 1}`)}
-                                                    className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
-                                                    title={`Bus Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
-                                                >
-                                                    {getSpotIcon(spot!)}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-
-                                <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm">
-                                    Upper Side (20 Cars)
-                                </div>
-                                <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm">
-                                    Lower Side (20 Cars)
-                                </div>
-                                <div className="absolute left-6 top-1/2 transform -translate-y-1/2 -translate-x-20 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm" style={{ writingMode: 'vertical-rl' }}>
-                                    Faculty (6)
-                                </div>
-                                <div className="absolute right-6 top-1/2 transform -translate-y-1/2 translate-x-20 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm" style={{ writingMode: 'vertical-rl' }}>
-                                    Bus Terminal (4)
-                                </div>
-
-                            </div>
-
-
-                            <div className="mt-16 flex flex-wrap gap-6 justify-center">
-                                <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
-                                    <div className="w-6 h-6 bg-green-200 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold">✓</div>
-                                    <span className="text-sm text-slate-700 font-medium">Available</span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
-                                    <div className="w-6 h-6 bg-red-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">C</div>
-                                    <span className="text-sm text-slate-700 font-medium">Cars</span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
-                                    <div className="w-6 h-6 bg-blue-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">F</div>
-                                    <span className="text-sm text-slate-700 font-medium">Faculty</span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
-                                    <div className="w-6 h-6 bg-purple-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">B</div>
-                                    <span className="text-sm text-slate-700 font-medium">Buses</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="absolute -top-3 left-8 right-8">
+                      <div className="flex justify-between gap-1">
+                        {Array.from({ length: 20 }, (_, i) => {
+                          const spot = parkingSpots.find(s => s.id === `upper-${i + 1}`);
+                          return (
+                            <button
+                              key={`upper-${i + 1}`}
+                              onClick={() => toggleSpot(`upper-${i + 1}`)}
+                              className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
+                              title={`Upper Side Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
+                            >
+                              {getSpotIcon(spot!)}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
-                    </Card>
+
+                    <div className="absolute -bottom-3 left-8 right-8">
+                      <div className="flex justify-between gap-1">
+                        {Array.from({ length: 20 }, (_, i) => {
+                          const spot = parkingSpots.find(s => s.id === `lower-${i + 1}`);
+                          return (
+                            <button
+                              key={`lower-${i + 1}`}
+                              onClick={() => toggleSpot(`lower-${i + 1}`)}
+                              className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
+                              title={`Lower Side Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
+                            >
+                              {getSpotIcon(spot!)}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="absolute -left-3 top-8 bottom-8">
+                      <div className="flex flex-col justify-between h-full gap-1">
+                        {Array.from({ length: 6 }, (_, i) => {
+                          const spot = parkingSpots.find(s => s.id === `faculty-${i + 1}`);
+                          return (
+                            <button
+                              key={`faculty-${i + 1}`}
+                              onClick={() => toggleSpot(`faculty-${i + 1}`)}
+                              className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
+                              title={`Faculty Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
+                            >
+                              {getSpotIcon(spot!)}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="absolute -right-3 top-8 bottom-8">
+                      <div className="flex flex-col justify-between h-full gap-1">
+                        {Array.from({ length: 4 }, (_, i) => {
+                          const spot = parkingSpots.find(s => s.id === `bus-${i + 1}`);
+                          return (
+                            <button
+                              key={`bus-${i + 1}`}
+                              onClick={() => toggleSpot(`bus-${i + 1}`)}
+                              className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
+                              title={`Bus Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
+                            >
+                              {getSpotIcon(spot!)}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm">
+                      Upper Side (20 Cars)
+                    </div>
+                    <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm">
+                      Lower Side (20 Cars)
+                    </div>
+                    <div className="absolute left-6 top-1/2 transform -translate-y-1/2 -translate-x-20 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm" style={{ writingMode: 'vertical-rl' }}>
+                      Faculty (6)
+                    </div>
+                    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 translate-x-20 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm" style={{ writingMode: 'vertical-rl' }}>
+                      Bus Terminal (4)
+                    </div>
+
+                  </div>
+
+
+                  <div className="mt-16 flex flex-wrap gap-6 justify-center">
+                    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
+                      <div className="w-6 h-6 bg-green-200 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold">✓</div>
+                      <span className="text-sm text-slate-700 font-medium">Available</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
+                      <div className="w-6 h-6 bg-red-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">C</div>
+                      <span className="text-sm text-slate-700 font-medium">Cars</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
+                      <div className="w-6 h-6 bg-blue-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">F</div>
+                      <span className="text-sm text-slate-700 font-medium">Faculty</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
+                      <div className="w-6 h-6 bg-purple-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">B</div>
+                      <span className="text-sm text-slate-700 font-medium">Buses</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
             {/* Recent Activities */}
             <Card className="p-6">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Recent Activities</h3>
@@ -347,26 +347,34 @@ const getBusStatusIcon = (status: string) => {
           <Card className="p-6 mt-6">
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <button className="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg text-left transition-colors">
-                <Users className="w-6 h-6 text-blue-600 mb-2" />
-                <p className="font-medium text-gray-800">Manage Users</p>
-                <p className="text-sm text-gray-600">Register faculty or security</p>
-              </button>
-              <button className="p-4 bg-green-50 hover:bg-green-100 rounded-lg text-left transition-colors">
-                <MessageSquareWarning className="w-6 h-6 text-green-600 mb-2" />
-                <p className="font-medium text-gray-800">View Complaints</p>
-                <p className="text-sm text-gray-600">See the newly added complaints</p>
-              </button>
-              <button className="p-4 bg-yellow-50 hover:bg-yellow-100 rounded-lg text-left transition-colors">
-                <Shield className="w-6 h-6 text-yellow-600 mb-2" />
-                <p className="font-medium text-gray-800">Security Reports</p>
-                <p className="text-sm text-gray-600">View security activities</p>
-              </button>
-              <button className="p-4 bg-purple-50 hover:bg-purple-100 rounded-lg text-left transition-colors">
-                <TrendingUp className="w-6 h-6 text-purple-600 mb-2" />
-                <p className="font-medium text-gray-800">Generate Report</p>
-                <p className="text-sm text-gray-600">Create analytics report</p>
-              </button>
+              <Link href="/admin/users">
+                <button className="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg text-left transition-colors w-full">
+                  <Users className="w-6 h-6 text-blue-600 mb-2" />
+                  <p className="font-medium text-gray-800">Manage Users</p>
+                  <p className="text-sm text-gray-600">Register faculty or security</p>
+                </button>
+              </Link>
+              <Link href="/admin/complaints">
+                <button className="p-4 bg-green-50 hover:bg-green-100 rounded-lg text-left transition-colors w-full">
+                  <MessageSquareWarning className="w-6 h-6 text-green-600 mb-2" />
+                  <p className="font-medium text-gray-800">View Complaints</p>
+                  <p className="text-sm text-gray-600">See the newly added complaints</p>
+                </button>
+              </Link>
+              <Link href="/admin/security">
+                <button className="p-4 bg-yellow-50 hover:bg-yellow-100 rounded-lg text-left transition-colors w-full">
+                  <Shield className="w-6 h-6 text-yellow-600 mb-2" />
+                  <p className="font-medium text-gray-800">Security Reports</p>
+                  <p className="text-sm text-gray-600">View security activities</p>
+                </button>
+              </Link>
+              <Link href="/admin/getreport">
+                <button className="p-4 bg-purple-50 hover:bg-purple-100 rounded-lg text-left transition-colors w-full">
+                  <TrendingUp className="w-6 h-6 text-purple-600 mb-2" />
+                  <p className="font-medium text-gray-800">Generate Report</p>
+                  <p className="text-sm text-gray-600">Create analytics report</p>
+                </button>
+              </Link>
             </div>
           </Card>
         </main>
