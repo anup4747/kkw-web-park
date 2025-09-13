@@ -25,11 +25,11 @@ export default function SecurityHeader({
 }: SecurityHeaderProps) {
   const headerClasses = darkMode 
     ? 'bg-gray-800 text-white' 
-    : 'bg-blue-600 text-white';
+    : 'bg-gray-600 text-white';
 
   const searchClasses = darkMode
-    ? 'bg-gray-700 text-white placeholder-gray-300 border-gray-600 focus:ring-blue-400'
-    : 'bg-blue-500 text-white placeholder-blue-300 border-blue-400 focus:ring-blue-300';
+    ? 'bg-gray-700 text-white placeholder-gray-300 border-gray-600 focus:ring-gray-400'
+    : 'bg-gray-500 text-white placeholder-gray-300 border-gray-400 focus:ring-gray-300';
 
   return (
     <header className={headerClasses}>

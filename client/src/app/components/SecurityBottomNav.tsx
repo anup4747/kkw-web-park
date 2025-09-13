@@ -38,9 +38,9 @@ export default function SecurityBottomNav({ currentPage = 'dashboard', darkMode 
   const itemClasses = (isActive: boolean) => {
     const base = 'flex flex-col items-center gap-1 p-2 rounded-lg transition-colors min-w-0 flex-1';
     if (darkMode) {
-      return `${base} ${isActive ? 'text-blue-400 bg-gray-700' : 'text-gray-300 hover:text-blue-400 hover:bg-gray-700'}`;
+      return `${base} ${isActive ? 'text-gray-300 bg-gray-700' : 'text-gray-400 hover:text-gray-300 hover:bg-gray-700'}`;
     }
-    return `${base} ${isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'}`;
+    return `${base} ${isActive ? 'text-gray-700 bg-gray-100' : 'text-gray-600 hover:text-gray-700 hover:bg-gray-100'}`;
   };
 
   return (

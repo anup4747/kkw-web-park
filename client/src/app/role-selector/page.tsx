@@ -26,9 +26,9 @@ export default function RoleSelector() {
     },
     {
       title: 'Security Guard',
-      description: 'Verify bookings and monitor parking areas',
+      description: 'Verify bookings and monitor asdasdasdsad parking areas',
       icon: UserCheck,
-      color: 'purple',
+      color: 'gray',
       href: '/security/dashboard',
       features: ['QR Verification', 'Slot Monitoring', 'Shift Logging', 'Emergency Alerts'],
       userCount: '20 Security Guards'
@@ -53,13 +53,13 @@ export default function RoleSelector() {
           accent: 'text-green-600',
           badge: 'bg-green-100 text-green-800 border-green-200'
         };
-      case 'purple':
+      case 'gray':
         return {
-          bg: 'professional-card border-purple-200 hover:border-purple-300',
-          icon: 'text-purple-600',
-          button: 'bg-purple-600 hover:bg-purple-700',
-          accent: 'text-purple-600',
-          badge: 'bg-purple-100 text-purple-800 border-purple-200'
+          bg: 'professional-card border-gray-200 hover:border-gray-300',
+          icon: 'text-gray-600',
+          button: 'bg-gray-600 hover:bg-gray-700',
+          accent: 'text-gray-600',
+          badge: 'bg-gray-100 text-gray-800 border-gray-200'
         };
       default:
         return {
@@ -74,32 +74,6 @@ export default function RoleSelector() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 professional-grid">
-      {/* Header */}
-      <header className="professional-card border-b border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-3 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg">
-                <Building2 className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-800 professional-heading">KKW College</h1>
-                <p className="text-sm text-gray-600">Parking Management System</p>
-              </div>
-            </div>
-            <div className="hidden md:flex items-center gap-6">
-              <div className="text-right">
-                <p className="text-sm text-gray-600">Total Users</p>
-                <p className="text-2xl font-bold text-blue-600">230</p>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-gray-600">Parking Slots</p>
-                <p className="text-2xl font-bold text-green-600">150</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Welcome Section */}
@@ -124,10 +98,10 @@ export default function RoleSelector() {
                 className={`p-8 ${colors.bg} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group`}
               >
                 <div className="text-center mb-6">
-                  <div className={`w-16 h-16 bg-gradient-to-r from-${role.color}-500 to-${role.color === 'blue' ? 'blue' : role.color === 'green' ? 'green' : 'purple'}-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-16 h-16 ${role.color === 'blue' ? 'bg-gradient-to-r from-blue-500 to-blue-600' : role.color === 'green' ? 'bg-gradient-to-r from-green-500 to-green-600' : 'bg-gradient-to-r from-gray-500 to-gray-600'} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors professional-heading">{role.title}</h3>
+                  <h3 className={`text-2xl font-bold text-gray-800 mb-2 group-hover:${role.color === 'blue' ? 'text-blue-600' : role.color === 'green' ? 'text-green-600' : 'text-gray-600'} transition-colors professional-heading`}>{role.title}</h3>
                   <p className="text-gray-600 mb-4 professional-text">{role.description}</p>
                   <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${colors.badge}`}>
                     {role.userCount}
@@ -159,68 +133,7 @@ export default function RoleSelector() {
           })}
         </div>
 
-        {/* System Overview */}
-        <div className="professional-card p-8 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4 professional-heading">System Overview</h3>
-            <p className="text-gray-600 max-w-3xl mx-auto professional-text">
-              Our comprehensive parking management system serves the entire college community with 
-              role-specific interfaces designed for optimal user experience and operational efficiency.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center group">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                <Car className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors professional-heading">Smart Parking</h4>
-              <p className="text-sm text-gray-600 professional-text">
-                Real-time slot monitoring and intelligent booking system
-              </p>
-            </div>
-            
-            <div className="text-center group">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                <Eye className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="font-semibold text-gray-800 mb-2 group-hover:text-green-600 transition-colors professional-heading">Live Monitoring</h4>
-              <p className="text-sm text-gray-600 professional-text">
-                Real-time tracking and verification for security teams
-              </p>
-            </div>
-            
-            <div className="text-center group">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="font-semibold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors professional-heading">Secure Access</h4>
-              <p className="text-sm text-gray-600 professional-text">
-                Role-based permissions and secure authentication
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-          <div className="professional-card p-4 text-center border-blue-200 hover:border-blue-300 transition-all duration-300 group">
-            <p className="text-2xl font-bold text-blue-600 group-hover:scale-110 transition-transform duration-300">230</p>
-            <p className="text-sm text-gray-600">Total Users</p>
-          </div>
-          <div className="professional-card p-4 text-center border-green-200 hover:border-green-300 transition-all duration-300 group">
-            <p className="text-2xl font-bold text-green-600 group-hover:scale-110 transition-transform duration-300">150</p>
-            <p className="text-sm text-gray-600">Parking Slots</p>
-          </div>
-          <div className="professional-card p-4 text-center border-purple-200 hover:border-purple-300 transition-all duration-300 group">
-            <p className="text-2xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">78%</p>
-            <p className="text-sm text-gray-600">Occupancy Rate</p>
-          </div>
-          <div className="professional-card p-4 text-center border-yellow-200 hover:border-yellow-300 transition-all duration-300 group">
-            <p className="text-2xl font-bold text-yellow-600 group-hover:scale-110 transition-transform duration-300">99.9%</p>
-            <p className="text-sm text-gray-600">Uptime</p>
-          </div>
-        </div>
       </main>
 
       {/* Footer */}

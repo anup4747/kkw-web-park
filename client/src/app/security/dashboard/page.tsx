@@ -118,7 +118,7 @@ export default function SecurityDashboard() {
               <div className="mt-4">
                 <div className="w-full bg-gray-300 rounded-full h-2">
                   <div 
-                    className="bg-blue-600 h-2 rounded-full" 
+                    className="bg-gray-600 h-2 rounded-full" 
                     style={{ width: `${(zone.occupied / zone.total) * 100}%` }}
                   ></div>
                 </div>
@@ -162,7 +162,7 @@ export default function SecurityDashboard() {
                     <p className="font-bold text-sm">{alert.message}</p>
                     <p className="text-xs opacity-80 mt-1">{alert.time}</p>
                   </div>
-                  <StatusBadge status={alert.priority} />
+                  <StatusBadge status={alert.priority === 'high' ? 'rejected' : alert.priority === 'medium' ? 'pending' : 'approved'} />
                 </div>
               </div>
             ))}

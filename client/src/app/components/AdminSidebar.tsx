@@ -78,7 +78,7 @@ export default function AdminSidebar({ currentPage = 'dashboard' }: AdminSidebar
             </div>
             <div>
               <h1 className="text-xl font-bold">Admin Panel</h1>
-              <p className="text-sm text-gray-400">Parking Management</p>
+              <p className="text-sm text-gray-400">KKW Parking Management</p>
             </div>
           </div>
         </div>

@@ -16,7 +16,8 @@ import {
   CheckCircle,
   Bus,
   Car,
-  Building
+  Building,
+  MessageSquareWarning
 } from 'lucide-react';
 import { Bus_type, Slot, ParkingSpot } from "@/types/types";
 
@@ -348,13 +349,13 @@ const getBusStatusIcon = (status: string) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <button className="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg text-left transition-colors">
                 <Users className="w-6 h-6 text-blue-600 mb-2" />
-                <p className="font-medium text-gray-800">Add New User</p>
+                <p className="font-medium text-gray-800">Manage Users</p>
                 <p className="text-sm text-gray-600">Register faculty or security</p>
               </button>
               <button className="p-4 bg-green-50 hover:bg-green-100 rounded-lg text-left transition-colors">
-                <MapPin className="w-6 h-6 text-green-600 mb-2" />
-                <p className="font-medium text-gray-800">Manage Slots</p>
-                <p className="text-sm text-gray-600">Add or modify parking slots</p>
+                <MessageSquareWarning className="w-6 h-6 text-green-600 mb-2" />
+                <p className="font-medium text-gray-800">View Complaints</p>
+                <p className="text-sm text-gray-600">See the newly added complaints</p>
               </button>
               <button className="p-4 bg-yellow-50 hover:bg-yellow-100 rounded-lg text-left transition-colors">
                 <Shield className="w-6 h-6 text-yellow-600 mb-2" />

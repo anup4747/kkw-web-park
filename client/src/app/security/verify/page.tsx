@@ -127,17 +127,17 @@ export default function SecurityVerify() {
 
         {/* Verification Result */}
         {verificationResult && (
-          <Card className={`p-6 ${cardClasses} border-green-200 bg-green-50`}>
+          <Card className={`p-6 ${cardClasses} border-gray-200 bg-gray-50`}>
             <div className="flex items-center gap-3 mb-4">
-              <CheckCircle className="w-6 h-6 text-green-600" />
-              <h2 className="text-lg font-bold text-green-800">Booking Found</h2>
+              <CheckCircle className="w-6 h-6 text-gray-600" />
+              <h2 className="text-lg font-bold text-gray-800">Booking Found</h2>
             </div>
             
             <div className="space-y-4">
               {/* Faculty Information */}
               <div className="p-4 bg-white rounded-lg border">
                 <div className="flex items-center gap-3 mb-3">
-                  <User className="w-5 h-5 text-blue-600" />
+                  <User className="w-5 h-5 text-gray-600" />
                   <h3 className="font-semibold">Faculty Information</h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -155,7 +155,7 @@ export default function SecurityVerify() {
               {/* Vehicle Information */}
               <div className="p-4 bg-white rounded-lg border">
                 <div className="flex items-center gap-3 mb-3">
-                  <Car className="w-5 h-5 text-green-600" />
+                  <Car className="w-5 h-5 text-gray-600" />
                   <h3 className="font-semibold">Vehicle Information</h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -173,7 +173,7 @@ export default function SecurityVerify() {
               {/* Parking Details */}
               <div className="p-4 bg-white rounded-lg border">
                 <div className="flex items-center gap-3 mb-3">
-                  <MapPin className="w-5 h-5 text-purple-600" />
+                  <MapPin className="w-5 h-5 text-gray-600" />
                   <h3 className="font-semibold">Parking Details</h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -216,14 +216,14 @@ export default function SecurityVerify() {
           <h2 className="text-lg font-bold mb-4">Recent Verifications</h2>
           <div className="space-y-3">
             {[
-              { id: 'V001', faculty: 'Dr. Smith', vehicle: 'XYZ-5678', time: '2 min ago', status: 'approved' },
-              { id: 'V002', faculty: 'Prof. Brown', vehicle: 'DEF-9012', time: '5 min ago', status: 'rejected' },
-              { id: 'V003', faculty: 'Dr. Wilson', vehicle: 'GHI-3456', time: '10 min ago', status: 'approved' },
+              { id: 'V001', faculty: 'Dr. Smith', vehicle: 'XYZ-5678', time: '2 min ago', status: 'approved' as const },
+              { id: 'V002', faculty: 'Prof. Brown', vehicle: 'DEF-9012', time: '5 min ago', status: 'rejected' as const },
+              { id: 'V003', faculty: 'Dr. Wilson', vehicle: 'GHI-3456', time: '10 min ago', status: 'approved' as const },
             ].map((verification) => (
               <div key={verification.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Car className="w-4 h-4 text-blue-600" />
+                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                    <Car className="w-4 h-4 text-gray-600" />
                   </div>
                   <div>
                     <p className="font-medium">{verification.faculty}</p>
