@@ -250,10 +250,10 @@ export default function AdminDashboard() {
             {/* Parking Map - Large Card */}
             <Card className="p-6 masonry-item masonry-item-large">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-2 bg-emerald-600 rounded-lg shadow-2xl">
+                <div className="p-2 bg-blue-600 rounded-lg shadow-2xl">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-800">Campus Parking Map</h2>
+                <h2 className="text-2xl font-bold text-black">Campus Parking Map</h2>
               </div>
 
               <div className="overflow-x-auto overflow-y-hidden flex items-center scale-[0.95]">
