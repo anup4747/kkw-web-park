@@ -17,11 +17,52 @@ import {
   Bus,
   Car,
   Building,
-  MessageSquareWarning
+  MessageSquareWarning,
+
 } from 'lucide-react';
 import { Bus_type, Slot, ParkingSpot } from "@/types/types";
 import Link from 'next/link';
+import Chart from 'react-apexcharts';
 
+function BasicSplineChart() {
+  const [chartData] = useState({
+    series: [{
+      name: 'Sales',
+      data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+    }],
+    options: {
+      chart: {
+        id: 'basic-spline',
+      },
+      title: {
+        text: 'Monthly Sales Report',
+        align: 'left',
+      },
+      xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+      },
+      stroke: {
+        curve: 'smooth', // This is the key setting for a spline chart
+      },
+      tooltip: {
+        x: {
+          format: 'yyyy',
+        },
+      },
+    },
+  });
+
+  return (
+    <div className="chart-container">
+      <Chart
+        options={chartData.options}
+        series={chartData.series}
+        type="line"
+        height={350}
+      />
+    </div>
+  );
+}
 /**
  * Admin Dashboard page
  * Professional and structured layout with clean design
@@ -179,7 +220,7 @@ export default function AdminDashboard() {
                       <p className="text-sm font-medium text-gray-600">{stat.title}</p>
                       <p className="text-2xl font-bold text-blue-600">{stat.value}</p>
                       <p className={`text-sm ${stat.changeType === 'positive' ? 'text-green-600' :
-                          stat.changeType === 'negative' ? 'text-red-600' : 'text-gray-600'
+                        stat.changeType === 'negative' ? 'text-red-600' : 'text-gray-600'
                         }`}>
                         {stat.change} from last month
                       </p>
@@ -194,16 +235,25 @@ export default function AdminDashboard() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <Card className="p-6">
+              <div className="flex items-center gap-4 mb-6 ">
+                <div className="p-2 bg-blue-600 rounded-lg shadow-2xl">
+                  <TrendingUp className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-slate-800">Dailt Bookings</h2>
+              </div>
+              <BasicSplineChart />
+            </Card>
             {/* Parking Map */}
             <Card className="p-6">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-emerald-100 rounded-lg">
-                  <MapPin className="w-8 h-8 text-emerald-600" />
+              <div className="flex items-center gap-4 mb-6 ">
+                <div className="p-2 bg-blue-600 rounded-lg shadow-2xl">
+                  <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold text-slate-800">Campus Parking Map</h2>
+                <h2 className="text-2xl font-bold text-slate-800">Campus Parking Map</h2>
               </div>
 
-              <div className="overflow-x-auto overflow-y-hidden flex items-center">
+              <div className="overflow-x-auto overflow-y-hidden flex items-center scale-[0.95]">
                 <div className="relative bg-slate-100 rounded-lg min-w-[800px] min-h-[600px] w-full p-16">
                   <div className="relative w-full h-96 bg-gradient-to-br from-emerald-50 to-teal-50 border-4 border-emerald-300 rounded-lg mx-auto">
 
@@ -322,9 +372,16 @@ export default function AdminDashboard() {
                 </div>
               </div>
             </Card>
+
+           {/* todays activties */}
             {/* Recent Activities */}
             <Card className="p-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Recent Activities</h3>
+              <div className="flex items-center gap-4 mb-6 ">
+                <div className="p-2 bg-blue-600 rounded-lg shadow-2xl">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-slate-800">Campus Parking Map</h2>
+              </div>
               <div className="space-y-4">
                 {recentActivities.map((activity) => (
                   <div key={activity.id} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
@@ -341,6 +398,8 @@ export default function AdminDashboard() {
                 View All Activities
               </button>
             </Card>
+
+
           </div>
 
           {/* Quick Actions */}
