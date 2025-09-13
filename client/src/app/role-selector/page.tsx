@@ -26,7 +26,7 @@ export default function RoleSelector() {
     },
     {
       title: 'Security Guard',
-      description: 'Verify bookings and monitor asdasdasdsad parking areas',
+      description: 'Verify bookings and monitor parking areas',
       icon: UserCheck,
       color: 'gray',
       href: '/security/dashboard',
