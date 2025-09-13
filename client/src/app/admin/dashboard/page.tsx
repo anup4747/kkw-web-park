@@ -36,13 +36,13 @@ function BasicSplineChart() {
       },
       title: {
         text: 'Monthly Sales Report',
-        align: 'left',
+        align: 'left' as const,
       },
       xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
       },
       stroke: {
-        curve: 'smooth', // This is the key setting for a spline chart
+        curve: 'smooth' as const, // This is the key setting for a spline chart
       },
       tooltip: {
         x: {
@@ -234,20 +234,23 @@ export default function AdminDashboard() {
             })}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="p-6">
-              <div className="flex items-center gap-4 mb-6 ">
+          {/* Masonry Layout */}
+          <div className="masonry-grid">
+            {/* Daily Bookings Chart - Large Card */}
+            <Card className="p-6 masonry-item masonry-item-large">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="p-2 bg-blue-600 rounded-lg shadow-2xl">
                   <TrendingUp className="w-6 h-6 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-800">Dailt Bookings</h2>
+                <h2 className="text-2xl font-bold text-slate-800">Daily Bookings</h2>
               </div>
               <BasicSplineChart />
             </Card>
-            {/* Parking Map */}
-            <Card className="p-6">
-              <div className="flex items-center gap-4 mb-6 ">
-                <div className="p-2 bg-blue-600 rounded-lg shadow-2xl">
+
+            {/* Parking Map - Large Card */}
+            <Card className="p-6 masonry-item masonry-item-large">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-2 bg-emerald-600 rounded-lg shadow-2xl">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-slate-800">Campus Parking Map</h2>
@@ -350,7 +353,6 @@ export default function AdminDashboard() {
 
                   </div>
 
-
                   <div className="mt-16 flex flex-wrap gap-6 justify-center">
                     <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
                       <div className="w-6 h-6 bg-green-200 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold">✓</div>
@@ -373,18 +375,17 @@ export default function AdminDashboard() {
               </div>
             </Card>
 
-           {/* todays activties */}
-            {/* Recent Activities */}
-            <Card className="p-6">
-              <div className="flex items-center gap-4 mb-6 ">
-                <div className="p-2 bg-blue-600 rounded-lg shadow-2xl">
-                  <MapPin className="w-6 h-6 text-white" />
+            {/* Recent Activities - Medium Card */}
+            <Card className="p-6 masonry-item masonry-item-medium">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-2 bg-purple-600 rounded-lg shadow-2xl">
+                  <Clock className="w-6 h-6 text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-slate-800">Campus Parking Map</h2>
+                <h2 className="text-2xl font-bold text-slate-800">Recent Activities</h2>
               </div>
               <div className="space-y-4">
                 {recentActivities.map((activity) => (
-                  <div key={activity.id} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                  <div key={activity.id} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     {getActivityIcon(activity.type)}
                     <div className="flex-1">
                       <p className="text-sm font-medium text-gray-800">{activity.action}</p>
@@ -394,12 +395,115 @@ export default function AdminDashboard() {
                   </div>
                 ))}
               </div>
-              <button className="w-full mt-4 text-sm text-blue-600 hover:text-blue-700 font-medium">
+              <button className="w-full mt-4 text-sm text-purple-600 hover:text-purple-700 font-medium">
                 View All Activities
               </button>
             </Card>
 
+            {/* Bus Status - Medium Card */}
+            <Card className="p-6 masonry-item masonry-item-medium">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-2 bg-orange-600 rounded-lg shadow-2xl">
+                  <Bus className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-slate-800">Bus Status</h2>
+              </div>
+              <div className="space-y-4">
+                {buses.map((bus) => (
+                  <div key={bus.id} className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-gray-800">{bus.id}</h3>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getBusStatusColor(bus.status)}`}>
+                        {bus.status}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-1">{bus.route}</p>
+                    <p className="text-xs text-gray-500">Driver: {bus.driver}</p>
+                    <div className="mt-2 flex items-center justify-between">
+                      <span className="text-xs text-gray-500">
+                        {bus.currentPassengers}/{bus.capacity} passengers
+                      </span>
+                      {getBusStatusIcon(bus.status)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
 
+            {/* Parking Slots Summary - Small Card */}
+            <Card className="p-6 masonry-item masonry-item-small">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-2 bg-green-600 rounded-lg shadow-2xl">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-800">Parking Summary</h2>
+              </div>
+              <div className="space-y-3">
+                {slots.map((slot) => (
+                  <div key={slot.name} className="p-3 bg-gray-50 rounded-lg">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="font-medium text-gray-800">{slot.name}</span>
+                      <span className="text-sm text-gray-600">{slot.occupied}/{slot.capacity}</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                        style={{ width: `${(slot.occupied / slot.capacity) * 100}%` }}
+                      ></div>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-1">{slot.location}</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            {/* System Alerts - Small Card */}
+            <Card className="p-6 masonry-item masonry-item-small">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-2 bg-red-600 rounded-lg shadow-2xl">
+                  <AlertCircle className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-800">System Alerts</h2>
+              </div>
+              <div className="space-y-3">
+                <div className="p-3 bg-red-50 border-l-4 border-red-400 rounded">
+                  <p className="text-sm font-medium text-red-800">High Occupancy</p>
+                  <p className="text-xs text-red-600">Upper side parking at 95% capacity</p>
+                </div>
+                <div className="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                  <p className="text-sm font-medium text-yellow-800">Maintenance Due</p>
+                  <p className="text-xs text-yellow-600">Bus B003 requires service</p>
+                </div>
+                <div className="p-3 bg-blue-50 border-l-4 border-blue-400 rounded">
+                  <p className="text-sm font-medium text-blue-800">System Update</p>
+                  <p className="text-xs text-blue-600">Scheduled maintenance tonight</p>
+                </div>
+              </div>
+            </Card>
+
+            {/* Quick Stats - Small Card */}
+            <Card className="p-6 masonry-item masonry-item-small">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-2 bg-indigo-600 rounded-lg shadow-2xl">
+                  <TrendingUp className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-800">Quick Stats</h2>
+              </div>
+              <div className="space-y-4">
+                <div className="text-center p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
+                  <p className="text-2xl font-bold text-indigo-600">78%</p>
+                  <p className="text-sm text-gray-600">Overall Occupancy</p>
+                </div>
+                <div className="text-center p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
+                  <p className="text-2xl font-bold text-green-600">42</p>
+                  <p className="text-sm text-gray-600">Available Spots</p>
+                </div>
+                <div className="text-center p-3 bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg">
+                  <p className="text-2xl font-bold text-purple-600">156</p>
+                  <p className="text-sm text-gray-600">Total Bookings Today</p>
+                </div>
+              </div>
+            </Card>
           </div>
 
           {/* Quick Actions */}
