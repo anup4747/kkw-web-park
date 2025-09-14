@@ -6,6 +6,7 @@ interface CardProps {
   hover?: boolean;
   padding?: 'sm' | 'md' | 'lg';
   shadow?: 'sm' | 'md' | 'lg';
+  onClick?: () => void;
 }
 
 /**
@@ -17,7 +18,8 @@ export default function Card({
   className = '', 
   hover = false, 
   padding = 'md',
-  shadow = 'md' 
+  shadow = 'md',
+  onClick
 }: CardProps) {
   const paddingClasses = {
     sm: 'p-3',
@@ -35,9 +37,13 @@ export default function Card({
   const hoverClasses = hover ? 'hover:shadow-lg hover:border-gray-300 transition-all duration-300' : '';
   const paddingClass = paddingClasses[padding];
   const shadowClass = shadowClasses[shadow];
+  const clickableClasses = onClick ? 'cursor-pointer' : '';
 
   return (
-    <div className={`${baseClasses} ${paddingClass} ${shadowClass} ${hoverClasses} ${className}`}>
+    <div 
+      className={`${baseClasses} ${paddingClass} ${shadowClass} ${hoverClasses} ${clickableClasses} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </div>
   );

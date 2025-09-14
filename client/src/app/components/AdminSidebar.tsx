@@ -31,10 +31,9 @@ export default function AdminSidebar({ currentPage = 'dashboard' }: AdminSidebar
 
   const navigationItems = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'User Management', href: '/admin/users', icon: Users },
-    { name: 'Parking Slots', href: '/admin/slots', icon: MapPin },
+    { name: 'User Management', href: '/admin/adduser', icon: Users },
     { name: 'Security Guards', href: '/admin/security', icon: Shield },
-    { name: 'Faculty Management', href: '/admin/faculty', icon: Users },
+    { name: 'Registored Faculties', href: '/admin/faculty', icon: Users },
     { name: 'Reports', href: '/admin/reports', icon: BarChart3 },
     { name: 'Complaints', href: '/admin/complaints', icon: MessageSquareWarning },
     { name: 'Audit Logs', href: '/admin/logs', icon: FileText },
