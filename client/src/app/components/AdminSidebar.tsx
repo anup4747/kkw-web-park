@@ -72,6 +72,7 @@ export default function AdminSidebar({ currentPage = 'dashboard' }: AdminSidebar
         lg:translate-x-0
       `}>
         {/* Header */}
+        <Link href="/admin/dashboard">
         <div className="p-6 border-b border-gray-700">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-blue-600 rounded-lg">
@@ -83,6 +84,7 @@ export default function AdminSidebar({ currentPage = 'dashboard' }: AdminSidebar
             </div>
           </div>
         </div>
+        </Link>
 
         {/* Navigation */}
         <nav className="mt-6">

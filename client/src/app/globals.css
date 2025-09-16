@@ -216,9 +216,14 @@
 }
 
 .masonry-item-large {
-  --masonry-row-span: 25;
+  --masonry-row-span: 20;
   grid-column: span 2;
 }
+.masonry-item-large2 {
+  --masonry-row-span: 13;
+  grid-column: span 2;
+}
+
 
 .masonry-item-medium {
   --masonry-row-span: 18;
