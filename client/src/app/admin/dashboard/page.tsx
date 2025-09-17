@@ -165,11 +165,12 @@ export default function AdminDashboard() {
 
   const getSpotColor = (spot: ParkingSpot) => {
     if (spot.type === 'faculty') {
-      return spot.occupied ? 'bg-blue-500' : 'bg-blue-200';
+      return spot.occupied ? 'bg-blue-600' : 'bg-blue-200';
     } else if (spot.type === 'bus') {
-      return spot.occupied ? 'bg-purple-500' : 'bg-purple-200';
+      return spot.occupied ? 'bg-indigo-600' : 'bg-indigo-200';
     } else {
-      return spot.occupied ? 'bg-red-500' : 'bg-green-200';
+      // car
+      return spot.occupied ? 'bg-slate-600' : 'bg-blue-100';
     }
   };
 
@@ -257,13 +258,13 @@ export default function AdminDashboard() {
               </div>
 
               <div className="overflow-x-auto overflow-y-hidden flex items-center scale-[0.95]">
-                <div className="relative bg-slate-100 rounded-lg min-w-[800px] min-h-[600px] w-full p-16">
-                  <div className="relative w-full h-96 bg-gradient-to-br from-emerald-50 to-teal-50 border-4 border-emerald-300 rounded-lg mx-auto">
+                <div className="relative bg-blue-50 rounded-lg min-w-[800px] min-h-[600px] w-full p-16">
+                  <div className="relative w-full h-96 bg-gradient-to-br from-blue-50 to-indigo-50 border-4 border-blue-300 rounded-lg mx-auto">
 
-                    <div className="absolute inset-4 bg-white border-2 border-slate-300 rounded-lg flex items-center justify-center">
+                    <div className="absolute inset-4 bg-white border-2 border-blue-200 rounded-lg flex items-center justify-center">
                       <div className="text-center">
-                        <Building className="w-12 h-12 text-slate-400 mx-auto mb-2" />
-                        <p className="text-slate-600 font-semibold">KKW College Ground</p>
+                        <Building className="w-12 h-12 text-blue-400 mx-auto mb-2" />
+                        <p className="text-blue-600 font-semibold">KKW College Ground</p>
                       </div>
                     </div>
 
@@ -275,7 +276,7 @@ export default function AdminDashboard() {
                             <button
                               key={`upper-${i + 1}`}
                               onClick={() => toggleSpot(`upper-${i + 1}`)}
-                              className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
+                              className={`w-8 h-8 rounded-lg border-2 border-blue-300 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
                               title={`Upper Side Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
                             >
                               {getSpotIcon(spot!)}
@@ -293,7 +294,7 @@ export default function AdminDashboard() {
                             <button
                               key={`lower-${i + 1}`}
                               onClick={() => toggleSpot(`lower-${i + 1}`)}
-                              className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
+                              className={`w-8 h-8 rounded-lg border-2 border-blue-300 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
                               title={`Lower Side Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
                             >
                               {getSpotIcon(spot!)}
@@ -310,7 +311,7 @@ export default function AdminDashboard() {
                             <button
                               key={`faculty-${i + 1}`}
                               onClick={() => toggleSpot(`faculty-${i + 1}`)}
-                              className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
+                              className={`w-8 h-8 rounded-lg border-2 border-blue-300 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
                               title={`Faculty Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
                             >
                               {getSpotIcon(spot!)}
@@ -328,7 +329,7 @@ export default function AdminDashboard() {
                             <button
                               key={`bus-${i + 1}`}
                               onClick={() => toggleSpot(`bus-${i + 1}`)}
-                              className={`w-8 h-8 rounded-lg border-2 border-slate-400 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
+                              className={`w-8 h-8 rounded-lg border-2 border-blue-300 flex items-center justify-center text-white text-xs font-bold hover:scale-110 transition-all duration-200 shadow-sm ${getSpotColor(spot!)}`}
                               title={`Bus Spot ${i + 1} - ${spot?.occupied ? 'Occupied' : 'Available'}`}
                             >
                               {getSpotIcon(spot!)}
@@ -338,37 +339,37 @@ export default function AdminDashboard() {
                       </div>
                     </div>
 
-                    <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm">
+                    <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full shadow-sm border border-blue-200">
                       Upper Side (20 Cars)
                     </div>
-                    <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm">
+                    <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2 text-sm font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full shadow-sm border border-blue-200">
                       Lower Side (20 Cars)
                     </div>
-                    <div className="absolute left-6 top-1/2 transform -translate-y-1/2 -translate-x-20 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm" style={{ writingMode: 'vertical-rl' }}>
+                    <div className="absolute left-6 top-1/2 transform -translate-y-1/2 -translate-x-20 text-sm font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full shadow-sm border border-blue-200" style={{ writingMode: 'vertical-rl' }}>
                       Faculty (6)
                     </div>
-                    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 translate-x-20 text-sm font-semibold text-slate-700 bg-white px-3 py-1 rounded-full shadow-sm" style={{ writingMode: 'vertical-rl' }}>
+                    <div className="absolute right-6 top-1/2 transform -translate-y-1/2 translate-x-20 text-sm font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full shadow-sm border border-blue-200" style={{ writingMode: 'vertical-rl' }}>
                       Bus Terminal (4)
                     </div>
 
                   </div>
 
                   <div className="mt-16 flex flex-wrap gap-6 justify-center">
-                    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
-                      <div className="w-6 h-6 bg-green-200 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold">✓</div>
-                      <span className="text-sm text-slate-700 font-medium">Available</span>
+                    <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg shadow-sm border border-blue-200">
+                      <div className="w-6 h-6 bg-blue-100 rounded-lg border border-blue-300 flex items-center justify-center text-xs font-bold text-blue-600">✓</div>
+                      <span className="text-sm text-blue-700 font-medium">Available</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
-                      <div className="w-6 h-6 bg-red-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">C</div>
-                      <span className="text-sm text-slate-700 font-medium">Cars</span>
+                    <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg shadow-sm border border-blue-200">
+                      <div className="w-6 h-6 bg-slate-600 rounded-lg border border-blue-300 flex items-center justify-center text-xs font-bold text-white">C</div>
+                      <span className="text-sm text-blue-700 font-medium">Cars</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
-                      <div className="w-6 h-6 bg-blue-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">F</div>
-                      <span className="text-sm text-slate-700 font-medium">Faculty</span>
+                    <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg shadow-sm border border-blue-200">
+                      <div className="w-6 h-6 bg-blue-600 rounded-lg border border-blue-300 flex items-center justify-center text-xs font-bold text-white">F</div>
+                      <span className="text-sm text-blue-700 font-medium">Faculty</span>
                     </div>
-                    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm">
-                      <div className="w-6 h-6 bg-purple-500 rounded-lg border border-slate-400 flex items-center justify-center text-xs font-bold text-white">B</div>
-                      <span className="text-sm text-slate-700 font-medium">Buses</span>
+                    <div className="flex items-center gap-2 bg-blue-50 px-3 py-2 rounded-lg shadow-sm border border-blue-200">
+                      <div className="w-6 h-6 bg-indigo-600 rounded-lg border border-blue-300 flex items-center justify-center text-xs font-bold text-white">B</div>
+                      <span className="text-sm text-blue-700 font-medium">Buses</span>
                     </div>
                   </div>
                 </div>
