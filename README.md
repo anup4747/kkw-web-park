@@ -1,4 +1,12 @@
 # College Parking System
+
+
+
+https://github.com/user-attachments/assets/f3558ff9-95a8-445e-8288-0a1df7686f50
+
+
+
+
 This is a web and mobile application designed to manage parking slots for a college, catering to admins, security guards, and faculty members. The system allows faculty to book parking slots remotely, security to verify bookings, and admins to manage users and slots. Built with a client-server architecture using React.js for the frontend, Node.js for the backend, and Firebase for authentication and data storage.
 Project Structure
 The project is divided into two main directories:
